@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Prediction System</title>
+    <style>
+        body {
+    font-family: 'Poppins', sans-serif;
+    background: black;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Prevent scrolling */
+}
+
+.container {
+    max-height: 500px;
+    max-width: 450px;
+    padding: 30px;
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    border: 2px solid white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: auto;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;  /* Full viewport height */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    background-color: rgb(255, 252, 252);
+}
+
+.container {
+    position: absolute;
+    justify-content: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Moves it exactly to the center */
+    backdrop-filter: blur(40px);
+}
+
+
+
+
+
+
+
+
+        h2 {
+            color: #6e8efb;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .row, .rowx {
+            display: flex;
+            justify-content: space-between;
+            gap: 5px; /* Reduced gap to fit better */
+            flex-wrap: wrap; /* Ensures responsiveness */
+        }
+
+        .row div, .rowx div {
+            flex: 1;
+            min-width: 0; /* Prevents overflow */
+        }
+
+        label {
+            font-weight: 600;
+            color: #fffafa;
+            display: block;
+            text-align: left;
+            margin: 5px 0;
+            font-size: 12px;
+        }
+
+        input, select {
+            color: white;
+            background-color: transparent;
+            width: 100%; /* Full width for better fit */
+            padding: 8px;
+            margin: 3px 0;
+            border-radius: 20px;
+            border: 1px solid #ddd;
+            font-size: 12px;
+            box-sizing: border-box; /* Prevents width overflow */
+            transition: all 0.3s ease-in-out;
+        }
+
+        input:focus, select:focus {
+            border-color: #6e8efb;
+            box-shadow: 0px 0px 8px rgba(110, 142, 251, 0.5);
+            outline: none;
+        }
+
+
+
+        select,
+option {
+  color: rgb(99, 99, 99);
+  background-color: #222; /* dark background so white text is visible */
+}
+
+select option {
+  color: white;
+  background-color: #222;
+}
+
+
+        input::placeholder,
+        select,
+option {
+  color: white;
+  background-color: transparent; /* dark background so white text is visible */
+}
+
+select {
+  padding: 8px;
+  border-radius: 20px;
+    border: 1px solid #ffffff;
+  background-color: transparent;
+  color: white;
+  box-sizing: border-box;
+}
+
+
+
+
+        button {
+            background: #6e8efb;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 20px;
+            width: 100%;
+        }
+
+        button:hover {
+            background: #2650da;
+            transform: translateY(-2px);
+            box-shadow: 0px 5px 15px rgba(110, 142, 251, 0.3);
+        }
+
+
+
+
+
+        
+        #predictionResult {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #fff;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+
+ /* Header double line at the top */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1.2cm; 
+    background:transparent;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 5px double white; /* Creates the double line */
+    z-index: 1000; /* Keeps it above other elements */
+    backdrop-filter: blur(60px);
+}
+
+/* Push content down to avoid overlap */
+body {
+    padding-top: 3.5cm;
+}
+
+/* Back button styling */
+.back-button {
+    background: white;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+.back-button:hover {
+    background: gray;
+    color: white;
+}
+
+.about-button {
+    background: white;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    border: 2px solid black;
+    cursor: pointer;
+    margin-left: 1325px;
+}
+
+.about-button:hover {
+    background: gray;
+    color: white;
+}
+.title{color: white;}
+
+
+
+#bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+}
+
+
+
+
+
+
+
+
+    </style>
+</head>
+
+<body>
+    
+    <video autoplay muted loop id="bg-video">
+        <source src="{{ url_for('static', filename='a.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    
+
+    <h1 class="title">Career Prediction System</h1>
+    <div class="header">
+        <a href="{{ url_for('welcome') }}" class="back-button">Back</a>
+        
+        <a href="{{ url_for('about') }}" class="about-button">About us</a>
+    </div>
+    
+
+    <div class="container">
+
+        
+        
+        <h2>Career Prediction System</h2>
+        <form id="predictionForm">
+
+            <!-- Row 1 -->
+            <div class="row">
+                <div>
+                    <input type="number" placeholder="Age" name="Age" />
+                </div>
+            
+                <div>
+                    <input type="number" placeholder="Year of Experience" name="Previous Work Experience" />
+                </div>
+                <div>
+                    <input type="number" placeholder="No of Certifications" name="Certifications Count" />
+                </div>
+
+        
+
+
+
+            </div>
+
+            <br>
+
+            <!-- Row 2 -->
+            <div class="rowx">
+                <div>
+                
+                    <select id="EducationLevel" name="Education Level" required>
+                        <option value="" disabled selected>Education Level</option>
+                        <option value="Associate's">Associate's</option>
+                        <option value="Bachelor's">Bachelor's</option>
+                        <option value="Master's">Master's</option>
+                        <option value="PhD">PhD</option>
+                    </select>
+                </div>
+                <div>
+                 
+                    <select id="Gender" name="Gender" required>
+                        <option value="" disabled selected>Gender</option>
+                        
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+            
+                </div>
+                <div>
+                   
+                    <select id="PreferredWorkType" name="Preferred Work Type" required>
+                        <option value="" disabled selected>Work Type</option>
+                        <option value="Remote">Remote</option>
+                        <option value="On-Site">On-Site</option>
+                        <option value="Hybrid">Hybrid</option>
+                    </select>
+                </div>
+            </div>
+
+            <br>
+
+            <!-- Single Column Inputs -->
+            <div>
+                <div>
+                    <label for="TechnicalSkills">Technical Skills:</label>
+                    <input type="text" id="TechnicalSkills" name="Technical Skills" required>
+                </div>
+
+                <div>
+                    <label for="SoftSkills">Soft Skills:</label>
+                    <input type="text" id="SoftSkills" name="Soft Skills" required>
+                </div>
+
+                <div>
+                    <label for="InterestArea">Interest Area:</label>
+                    <input type="text" id="InterestArea" name="Interest Area" required>
+                </div>
+                <br>
+
+                <button type="submit">Predict Career 🎯</button>
+            </div>
+        </form>
+        <br><br>
+
+        <p id="predictionResult"></p>
+
+        
+    </div>
+
+    <script>
+        document.getElementById("predictionForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent page reload
+
+            let formData = new FormData(this);
+
+            fetch("/predict", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                let resultElement = document.getElementById("predictionResult");
+                if (data.predicted_career) {
+                    resultElement.innerText = "Predicted Career: " + data.predicted_career;
+                } else {
+                    resultElement.innerText = "Error: " + (data.error || "Something went wrong");
+                }
+                resultElement.style.opacity = 1;
+            })
+            .catch(error => {
+                let resultElement = document.getElementById("predictionResult");
+                resultElement.innerText = "Error: " + error;
+                resultElement.style.opacity = 1;
+            });
+        });
+    </script>
+
+</body>
+</html>

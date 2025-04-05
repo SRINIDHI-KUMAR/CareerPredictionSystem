@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Us - Career Prediction System</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: black;
+            color: white;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #6e8efb;
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #ccc;
+        }
+        a.back-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: white;
+            color: black;
+            text-decoration: none;
+            border-radius: 20px;
+        }
+        a.back-link:hover {
+            background: gray;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>About Us</h1>
+        <p>
+            Welcome to the Career Prediction System! 🎯  
+            This platform is designed to help individuals identify the most suitable career paths based on their experience, skills, education, and interests.  
+            Our mission is to guide you toward a fulfilling and successful future using data-driven insights.
+        </p>
+        <a href="{{ url_for('home') }}" class="back-link">Back to Home</a>
+    </div>
+</body>
+</html>
