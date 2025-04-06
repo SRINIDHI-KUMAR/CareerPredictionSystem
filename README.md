@@ -1,4 +1,4 @@
-# Career Prediction System
+# 🧠 Career Prediction System
 
 This project forecasts the best career choice for users based on machine learning (Random Forest Classifier). The model is trained with a labeled career prediction data. It processes preprocessing such as label encoding and feature scaling and then learns to recognize patterns in the data in order to suggest careers.
 
