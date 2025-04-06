@@ -5,7 +5,7 @@ This project forecasts the best career choice for users based on machine learnin
 
 
 📂Project Structure
- ├── app.py                         # Flask backend logic
+ ├── app.py                         <br># Flask backend logic<br>
  ├── train.py                       # Training script for the ML model
  ├── career_prediction_model.pkl    # Trained model file (generated after training)
  ├── label_encoder.pkl              # LabelEncoder for target variable
