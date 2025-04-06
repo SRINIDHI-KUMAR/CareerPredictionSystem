@@ -19,7 +19,7 @@ This project forecasts the best career choice for users based on machine learnin
  │   ├── m.mp4                      # mp4 file for index page<br>
  ├── career_prediction_dataset.csv  # Dataset used for training/testing<br>
 
-
+<br><br>
  
 ## ⚙️ Installation & Setup
 
